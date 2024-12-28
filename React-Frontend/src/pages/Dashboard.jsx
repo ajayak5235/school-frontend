@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import CreateUser from '../components/CreateUser';
-import CreateSchool from '../components/CreateSchool';
+
 import GetUsers from '../components/GetUsers';
 import GetSchool from '../components/getSchools';
 import GetClass from '../components/GetClass';
 import CreateClass from '../components/CreateClass';
 import GetStudents from '../components/GetStudent';
-import CreateStudent from '../components/createStudent';
+
 
 import { useNavigate } from 'react-router-dom';
 
@@ -34,21 +34,19 @@ const Dashboard = () => {
         <button onClick={() => setActiveComponent('CreateUser')}>Create User</button>
         <button onClick={() => setActiveComponent('GetUsers')}>Get User</button>
         <button onClick={() => setActiveComponent('CreateSchool')}>Create School</button>
-        <button onClick={() => setActiveComponent('GetSchool')}>Get Schools</button>
         <button onClick={() => setActiveComponent('GetClass')}>Get Class</button>
         <button onClick={() => setActiveComponent('CreateClass')}>Create Class</button>
         <button onClick={() => setActiveComponent('GetStudents')}>Get Students</button>
-        <button onClick={() => setActiveComponent('CreateStudent')}>Create Students</button>
       </div>
       <div>
         {activeComponent === 'CreateUser' && <CreateUser />}
         {activeComponent === 'CreateSchool' && <CreateSchool />}
         {activeComponent === 'GetUsers' && <GetUsers />}
-        {activeComponent === 'GetSchool' && <GetSchool />}
+        
         {activeComponent === 'GetClass' && <GetClass />}
         {activeComponent === 'CreateClass' && <CreateClass />}
         {activeComponent === 'GetStudents' && <GetStudents />}
-        {activeComponent === 'CreateStudent' && <CreateStudent />}
+    
       </div>
     </div>
   );
