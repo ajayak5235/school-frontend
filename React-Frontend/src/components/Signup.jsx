@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { signup } from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const Signup = () => {
   const [form, setForm] = useState({
     name: '',
@@ -47,7 +48,11 @@ const Signup = () => {
         }}
       >
         <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Sign Up</h2>
-        <p> Already have an account?<a href="/Login" style={{ marginBottom: '20px' }}>Login</a></p>
+        <p>
+          Already have an account? 
+          <Link to="/Login" style={{ marginBottom: '20px' }}>Login</Link>
+        </p>
+
         <input
           type="text"
           placeholder="Name"
