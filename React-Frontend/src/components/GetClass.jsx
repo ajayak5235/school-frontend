@@ -12,7 +12,6 @@ const GetClass = () => {
     const fetchClass = async () => {
       try {
         const res = await getClass();
-        console.log(res.data); // Debugging: Logs the fetched data
         setGetclass(res.data.data);
       } catch (err) {
         console.error("Error fetching users", err);
@@ -58,7 +57,7 @@ const GetClass = () => {
 
   return (
     <div style={{display:'flex', flexDirection:'column', alignItems:'center', marginTop:'60px'}}>
-      <h3>Schools List</h3>
+      <h3>Class List</h3>
       {getclass.length > 0 ? (
         <table border="1" style={{ width: "80%", }}>
           <thead style={{backgroundColor:'darkgreen', color:'white'}}>
