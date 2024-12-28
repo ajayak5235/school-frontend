@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { createUser } from '../services/api';
+import { toast,ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 const CreateUser = () => {
   const [form, setForm] = useState({
@@ -10,18 +12,20 @@ const CreateUser = () => {
     schoolId:''
   });
 
-  const navigate = useNavigate();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        await createUser(form);
-        alert('User Create successful! Please login.');
-        <p>Login With Create User<a href='/Login'></a></p>
+      await createUser(form);
+      toast.success('User created successfully!');
     } catch (error) {
-      alert('Signup failed.');
+      const errorMessage = error?.response?.data?.message || 'An error occurred.';
+      toast.error(errorMessage);
     }
   };
+
+
 
   return (
     <div
@@ -33,7 +37,19 @@ const CreateUser = () => {
         height: '70vh',
       }}
     >
+      <ToastContainer
+      position="top-center" 
+      autoClose={3000} 
+      hideProgressBar={false} 
+      newestOnTop={false} 
+      closeOnClick 
+      rtl={false} 
+      pauseOnFocusLoss 
+      draggable 
+      pauseOnHover 
       
+      />
+
       <form
         onSubmit={handleSubmit}
         style={{

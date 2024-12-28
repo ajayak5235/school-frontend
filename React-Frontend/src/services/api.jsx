@@ -90,3 +90,33 @@ export const deleteUser = (id) => {
         headers: { Authorization: token },
     });
   };
+
+  export const getStudents = () => {
+    const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
+    console.log('token:', token);
+    return api.get('/students', {  // Use api.get instead of axios.get
+      headers: { Authorization: token },
+    });
+  };
+
+  export const postStudent = (data) => {
+    const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
+    console.log('token:', token);
+    return api.post('/students', data, {  // Use api.get instead of axios.get
+      headers: { Authorization: token },
+    });
+  };
+
+  export const deleteStudent = (id) => {
+    const token = localStorage.getItem('token');
+      return api.delete(`/students/${id}`,{
+        headers: { Authorization: token },
+      });
+  };
+  
+  export const editStudent = (id, updatedData) => {
+    const token = localStorage.getItem('token');
+    return api.put(`students/${id}`, updatedData,{
+        headers: { Authorization: token },
+    });
+  };

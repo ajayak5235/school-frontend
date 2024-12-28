@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { createSchool } from '../services/api';
+import { toast,ToastContainer } from 'react-toastify';
+
 import { useNavigate } from 'react-router-dom';
 const CreateSchol = () => {
   const [form, setForm] = useState({
@@ -14,13 +16,15 @@ const CreateSchol = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        console.log(">> form",form)
+    
         await createSchool(form);
-        alert('School Create successful! Please login.');
+        toast.success('School created successfully!');
     
     } catch (error) {
-      alert('Signup failed.');
-    }
+      const errorMessage = error?.response?.data?.message || 'An error occurred.';
+            toast.error(errorMessage);
+          }
+    
   };
 
   return (
@@ -33,7 +37,18 @@ const CreateSchol = () => {
         height: '60vh',
       }}
     >
+      <ToastContainer
+      position="top-center" 
+      autoClose={3000} 
+      hideProgressBar={false} 
+      newestOnTop={false} 
+      closeOnClick 
+      rtl={false} 
+      pauseOnFocusLoss 
+      draggable 
+      pauseOnHover 
       
+      />
       <form
         onSubmit={handleSubmit}
         style={{
@@ -47,10 +62,10 @@ const CreateSchol = () => {
           backgroundColor: '#f9f9f9',
         }}
       >
-        <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>User Form</h2>
+        <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>School Form</h2>
         <input
           type="text"
-          placeholder="Name"
+          placeholder="School Name"
           onChange={(e) => setForm({ ...form, name: e.target.value })}
           style={{ margin: '10px', padding: '10px', width: '300px' }}
         />
